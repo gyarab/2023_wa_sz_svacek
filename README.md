@@ -9,4 +9,6 @@ Seznam barev:
 | Černá  | (0,0,0)   |
 | Bílá | (255,255,255)   |
 
+![Černá](https://about.canva.com/wp-content/uploads/sites/8/2019/03/black.png)
+
 
