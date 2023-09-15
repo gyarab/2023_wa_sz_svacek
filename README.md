@@ -10,5 +10,6 @@ Seznam barev:
 | Bílá | (255,255,255)   |
 
 ![Černá](https://about.canva.com/wp-content/uploads/sites/8/2019/03/black.png)
+<img src="[/assets/img/MarineGEO_logo.png](https://about.canva.com/wp-content/uploads/sites/8/2019/03/black.png)https://about.canva.com/wp-content/uploads/sites/8/2019/03/black.png" alt="MarineGEO circle logo" style="height: 100px; width:100px;"/>
 
 
