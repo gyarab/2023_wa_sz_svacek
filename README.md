@@ -9,7 +9,7 @@ Seznam barev:
 | Černá  | (0,0,0)   |
 | Bílá | (255,255,255)   |
 
-![Černá](https://about.canva.com/wp-content/uploads/sites/8/2019/03/black.png)
-<img src="https://about.canva.com/wp-content/uploads/sites/8/2019/03/black.png"  width="600" height="300">
+<img src="https://about.canva.com/wp-content/uploads/sites/8/2019/03/black.png"  width="300" height="300">
+<img src="https://www.colorcombos.com/images/colors/FFFFFF.png" width="300" height="300">
 
 
