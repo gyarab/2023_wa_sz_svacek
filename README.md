@@ -1,5 +1,5 @@
-### 2023_wa_sz_svacek
-# Repozitář na webové aplikace
+# 2023_wa_sz_svacek
+### Repozitář na webové aplikace
 Seznam barev:
 - Černá
 - Bílá
