@@ -6,8 +6,8 @@ Seznam barev:
 
 | Barva    | RGB |
 | -------- | ------- |
-| Černá  | (0,0,0)   |
-| Bílá | (255,255,255)   |
+| Černá  | (0,0,0)   <img src="https://www.colorcombos.com/images/colors/000000.png" width="15" height="15">|
+| Bílá | (255,255,255) <img src="https://www.colorcombos.com/images/colors/FFFFFF.png" width="15" height="15"> |
 
 <img src="https://www.colorcombos.com/images/colors/000000.png" width="300" height="300">
 <img src="https://www.colorcombos.com/images/colors/FFFFFF.png" width="300" height="300">
