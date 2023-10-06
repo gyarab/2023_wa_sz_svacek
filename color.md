@@ -4,3 +4,6 @@
 # Úvaha:
 - Logo využívá kombinaci červené a bílé barvy
 - Znázorňuje představuje kombinaci vášně, sebevědomí, síly a energie(červená) ale také klidu a rovnováhy(bílá)
+- Jedná se automobilový průmysl - prodej s ojetými vozy
+- Vášeň a sebevědomí ve výběru aut jde spolu dohromady
+- Rozvážnost a klid by mohla signalizovat kavlitní a spolehlivý managment -> IT, Marketing apod.
