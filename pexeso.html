@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji Memory Game</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        #memory-board {
+            display: grid;
+            grid-template-columns: repeat(4, 80px);
+            grid-gap: 10px;
+        }
+
+        .card {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            margin: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .card span {
+            display: none;
+        }
+
+        .card.flipped span {
+            display: block;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #2196f3;
+            color: #fff;
+            border: none;
+            border-radius: 2px;
+            outline: none;
+        }
+
+        #confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Emoji Memory Game!</h1>
+    <div id="memory-board"></div>
+    <div id="confetti"></div>
+    <button onclick="resetGame()">Reset Game</button>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        const emojis = ['😀', '😎', '🥳', '🚀', '🌈', '🍕', '🐱', '🎉', '🍦', '🎸'];
+
+        const shuffledEmojis = [...emojis, ...emojis].sort(() => Math.random() - 0.5);
+
+        const memoryBoard = document.getElementById('memory-board');
+        const confettiContainer = document.getElementById('confetti');
+
+        let flippedCards = [];
+        let locked = false;
+
+        function createCard(emoji, index) {
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.dataset.index = index;
+            card.innerHTML = `<span>${emoji}</span>`;
+            card.addEventListener('click', flipCard);
+            memoryBoard.appendChild(card);
+        }
+
+        function flipCard() {
+            if (locked) return;
+
+            const card = this;
+
+            if (!card.classList.contains('flipped') && flippedCards.length < 2) {
+                card.classList.add('flipped');
+                flippedCards.push(card);
+
+                if (flippedCards.length === 2) {
+                    const [card1, card2] = flippedCards;
+                    const index1 = card1.dataset.index;
+                    const index2 = card2.dataset.index;
+
+                    if (shuffledEmojis[index1] === shuffledEmojis[index2]) {
+                        flippedCards = [];
+                        celebrate();
+                    } else {
+                        locked = true;
+                        setTimeout(() => {
+                            card1.classList.remove('flipped');
+                            card2.classList.remove('flipped');
+                            flippedCards = [];
+                            locked = false;
+                        }, 1000);
+                    }
+                }
+            }
+
+            if (document.querySelectorAll('.flipped').length === shuffledEmojis.length) {
+                alert('Velká Gratulace!');
+            }
+        }
+
+        function celebrate() {
+            particlesJS('confetti', {
+                particles: {
+                    number: {
+                        value: 100,
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: ['#ff8c00', '#4caf50', '#2196f3', '#9c27b0', '#ff5722']
+                    },
+                    shape: {
+                        type: 'circle',
+                        stroke: {
+                            width: 0,
+                            color: '#000'
+                        }
+                    },
+                    opacity: {
+                        value: 0.5,
+                        random: false,
+                        anim: {
+                            enable: false,
+                            speed: 1,
+                            opacity_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: 5,
+                        random: true,
+                        anim: {
+                            enable: false,
+                            speed: 40,
+                            size_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    line_linked: {
+                        enable: false,
+                        distance: 500,
+                        color: '#ffffff',
+                        opacity: 0.4,
+                        width: 2
+                    },
+                    move: {
+                        enable: true,
+                        speed: 6,
+                        direction: 'none',
+                        random: false,
+                        straight: false,
+                        out_mode: 'out',
+                        bounce: false,
+                        attract: {
+                            enable: false,
+                            rotateX: 600,
+                            rotateY: 1200
+                        }
+                    }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: {
+                            enable: false,
+                            mode: 'repulse'
+                        },
+                        onclick: {
+                            enable: false,
+                            mode: 'push'
+                        },
+                        resize: true
+                    }
+                },
+                retina_detect: true
+            });
+
+            setTimeout(() => {
+                confettiContainer.innerHTML = ''; // Smazat konfety po 1.5 s
+            }, 1500);
+        }
+
+        function resetGame() {
+            location.reload();
+        }
+
+        shuffledEmojis.forEach((emoji, index) => createCard(emoji, index));
+    </script>
+</body>
+</html>
